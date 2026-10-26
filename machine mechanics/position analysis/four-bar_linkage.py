@@ -69,45 +69,45 @@ else:
 
 #GRAFICO ILLUSTRATIVO DEL MECCANISMO
 
-# --- 5. CALCOLO DELLE COORDINATE DEI NODI PER IL DISEGNO ---
-# Estraiamo gli angoli calcolati dal risolutore (in radianti)
+#CALCOLO DELLE COORDINATE DEI NODI PER IL DISEGNO 
+#Estraggo gli angoli calcolati dal risolutore (in radianti)
 phi2 = sol[0]
 phi3 = sol[1]
 
-# Coordinate dei perni fissi del telaio
+#Coordinate dei perni fissi del telaio
 xA, yA = A[0], A[1]
 xD, yD = D[0], D[1]
 
-# Coordinate del nodo B (estremo tra manovella z1 e biella z2)
+#Coordinate del nodo B (estremo tra manovella z1 e biella z2)
 xB = xA + z1 * np.cos(phi1)
 yB = yA + z1 * np.sin(phi1)
 
-# Coordinate del nodo C (estremo tra biella z2 e bilanciere z3)
+#Coordinate del nodo C (estremo tra biella z2 e bilanciere z3)
 xC = xB + z2 * np.cos(phi2)
 yC = yB + z2 * np.sin(phi2)
 
-# --- 6. CREAZIONE DEL GRAFICO ILLUSTRATIVO DEL MECCANISMO ---
+#CREAZIONE DEL GRAFICO ILLUSTRATIVO DEL MECCANISMO 
 plt.figure(figsize=(8, 8))
 
-# Disegno del telaio z4 (collegamento fisso tra A e D) con linea tratteggiata
+#Disegno del telaio z4 (collegamento fisso tra A e D) con linea tratteggiata
 plt.plot([xA, xD], [yA, yD], color='gray', linestyle='--', linewidth=3, label='Telaio ($z_4$)')
 
-# Disegno della manovella z1 (da A a B)
+#Disegno della manovella z1 (da A a B)
 plt.plot([xA, xB], [yA, yB], color='blue', linewidth=4, marker='o', markersize=8, label='Manovella ($z_1$)')
 
-# Disegno della biella z2 (da B a C)
+#Disegno della biella z2 (da B a C)
 plt.plot([xB, xC], [yB, yC], color='green', linewidth=4, marker='o', markersize=8, label='Biella ($z_2$)')
 
-# Disegno del bilanciere z3 (da C a D)
+#Disegno del bilanciere z3 (da C a D)
 plt.plot([xC, xD], [yC, yD], color='orange', linewidth=4, marker='o', markersize=8, label='Bilanciere ($z_3$)')
 
-# Aggiunta delle etichette testuali per identificare i nodi A, B, C, D
+#Aggiunta delle etichette testuali per identificare i nodi A, B, C, D
 plt.text(xA - 0.3, yA - 0.3, 'A', fontsize=14, fontweight='bold', color='black')
 plt.text(xB - 0.2, yB + 0.3, 'B', fontsize=14, fontweight='bold', color='black')
 plt.text(xC + 0.2, yC + 0.3, 'C', fontsize=14, fontweight='bold', color='black')
 plt.text(xD + 0.3, yD - 0.3, 'D', fontsize=14, fontweight='bold', color='black')
 
-# Impostazioni estetiche del grafico
+#Impostazioni estetiche del grafico
 plt.axhline(0, color='lightgray', linestyle=':')
 plt.axvline(0, color='lightgray', linestyle=':')
 plt.xlabel('Coordinata X [m]', fontsize=12)
@@ -115,7 +115,7 @@ plt.ylabel('Coordinata Y [m]', fontsize=12)
 plt.title(f'Configurazione del Meccanismo ($\phi_1 = {phi1deg:.1f}°$)', fontsize=14)
 plt.grid(True, linestyle=':', alpha=0.6)
 
-# FONDAMENTALE: mantiene le proporzioni geometriche reali 1:1 tra gli assi x e y
+#FONDAMENTALE: mantiene le proporzioni geometriche reali 1:1 tra gli assi x e y
 plt.axis('equal') 
 
 plt.legend(loc='upper right', fontsize=11)
